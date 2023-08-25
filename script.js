@@ -1,3 +1,10 @@
+// TODO: add validation for user selection
+// TODO: sanitize user selection
+// TODO: add draw condition for game()
+
+// scores
+let playerScore = 0;
+let computerScore = 0;
 const WEAPONS = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
@@ -14,12 +21,31 @@ function playRound(playerSelection, computerSelection) {
   }
 
   if (PLAYER === "rock" && COMPUTER === "scissors") {
-    return `You win! ${PLAYER} beats ${COMPUTER}`;
+    playerScore++;
+    return `You win this round! ${PLAYER} beats ${COMPUTER}`;
   } else if (PLAYER === "paper" && COMPUTER === "rock") {
-    return `You win! ${PLAYER} beats ${COMPUTER}`;
+    playerScore++;
+    return `You win this round! ${PLAYER} beats ${COMPUTER}`;
   } else if (PLAYER === "scissors" && COMPUTER === "paper") {
-    return `You win! ${PLAYER} beats ${COMPUTER}`;
+    playerScore++;
+    return `You win this round! ${PLAYER} beats ${COMPUTER}`;
   } else {
-    return `You lose! ${COMPUTER} beats ${PLAYER}`;
+    computerScore++;
+    return `You lose this round! ${COMPUTER} beats ${PLAYER}`;
   }
 }
+
+function game() {
+  // game loop
+  for (let i = 0; i < 5; i++) {
+    const PLAYERCHOICE = prompt("Rock Paper Scisscors?");
+    const COMPUTERCHOICE = getComputerChoice();
+    console.log(playRound(PLAYERCHOICE, COMPUTERCHOICE));
+  }
+
+  console.log(
+    playerScore > computerScore ? "You win the game!" : "You lose the game!"
+  );
+}
+
+game();
