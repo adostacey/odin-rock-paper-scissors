@@ -1,10 +1,10 @@
 // TODO: add validation for user selection
-// TODO: sanitize user selection
 // TODO: add draw condition for game()
 
 // scores
 let playerScore = 0;
 let computerScore = 0;
+
 const WEAPONS = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
@@ -13,7 +13,8 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  const PLAYER = playerSelection.toLowerCase();
+  // sanitize player input
+  const PLAYER = playerSelection.toLowerCase().trim();
   const COMPUTER = computerSelection;
 
   if (PLAYER === COMPUTER) {
